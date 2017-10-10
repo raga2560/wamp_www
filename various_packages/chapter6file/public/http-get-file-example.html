@@ -1,0 +1,89 @@
+<!-- File: chapter6/public/http-get-example.html -->
+<html ng-app="notesApp">
+
+<head>
+  <title>$http get example</title>
+  
+</head>
+
+<body ng-controller="MainCtrl">
+  <h1>Hello Servers!</h1>
+  <div ng-repeat="todo in items" class="item">
+    <div><span ng-bind="todo.label"></span></div>
+    <div>- by <span ng-bind="todo.author"></span></div>
+  </div>
+  <embed ng-src="{{content}}" style="width:200px;height:200px;"></embed>
+  <a href={{datar.path}} target="_blank" > download {{datar.path}}</a>
+
+<script
+  src="angular.min.js">
+  
+
+</script>
+<script
+  src="angular-file-saver/dist/angular-file-saver.bundle.js">
+  
+
+</script>
+<script>
+  angular.module('notesApp', ['ngFileSaver'])
+    .controller('MainCtrl', function($scope, $http, $sce, FileSaver, Blob) {
+	
+    
+      $scope.items = [];
+	  
+	  function openPDF(resData, fileName) {
+    var ieEDGE = navigator.userAgent.match(/Edge/g);
+    var ie = navigator.userAgent.match(/.NET/g); // IE 11+
+    var oldIE = navigator.userAgent.match(/MSIE/g); 
+
+    var blob = new window.Blob([resData], { type: 'application/pdf' });
+
+    if (ie || oldIE || ieEDGE) {
+       window.navigator.msSaveBlob(blob, fileName);
+    }
+    else {
+       var reader = new window.FileReader();
+       reader.onloadend = function () {
+          window.location.href = reader.result;
+       };
+       reader.readAsDataURL(blob);
+    }
+}
+function createObjectURL ( file ) {
+    if ( window.webkitURL ) {
+        return window.webkitURL.createObjectURL( file );
+    } else if ( window.URL && window.URL.createObjectURL ) {
+        return window.URL.createObjectURL( file );
+    } else {
+        return null;
+    }
+}
+
+// http://stackoverflow.com/questions/28310366/angularjs-restangular-how-to-name-file-blob-for-download
+// https://www.npmjs.com/package/angular-file-saver
+// https://github.com/eligrey/FileSaver.js/
+
+      $http.get('/api/download').then(function(response) {
+        $scope.datar = response.data;
+//		openPDF($scope.datar, "myPDFdoc.pdf");
+		
+	//	var fileURL = window.URL.createObjectURL($scope.datar);
+	//	$scope.content = $sce.trustAsResourceUrl(fileURL);
+	
+	// $scope.blobURL = (window.URL || window.webkitURL).createObjectURL($scope.datar);
+	//	$scope.blobURL = createObjectURL($scope.datar);
+	//	var blob = new window.Blob([$scope.datar], { type: 'application/pdf' });
+	 /*var blob = new Blob([$scope.datar], { type: 'application/pdf' });
+	 FileSaver.saveAs(blob, 'text.pdf');
+		
+      }, function(errResponse) {
+        console.error('Error while fetching notes');
+      });
+	  */
+	  });
+	  
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+
+<html ng-app="sportsApp">
+
+<head>
+  <title>HTTP Post Example</title>
+  <style>
+    .player {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body ng-controller="MainCtrl">
+  <h1>Hello Servers!</h1>
+  <div ng-repeat="train in trains.stations"        class="player">
+    <div> {{train.fullname}} , {{train.state}} <a href="#"> {{train.code}}</a></div>
+  </div>
+
+  <div>
+    <form name="addForm"
+          ng-submit="addplayer()">
+      <input type="text"
+             placeholder="Name"
+             ng-model="newplayer.name"
+             required>
+			 <input type="text"
+             placeholder="Game"
+             ng-model="newplayer.game"
+             required>
+			 <input type="number"
+             placeholder="Age"
+             ng-model="newplayer.age"
+             required>
+      
+      <input type="submit"
+             value="Add"
+             ng-disabled="addForm.$invalid">
+    </form>
+	
+	Get station codes by city      <input type="text"
+             placeholder="stationame"
+             ng-model="railway.stationname"
+             required>
+			 <button ng-click="gettrainByStationName()" > Get train by station name </button>
+			 </br>
+
+    Get trains by station codes      <input type="text"
+             placeholder="stationcode"
+             ng-model="railway.stationcode"
+             required>
+			 <button ng-click="gettrainByStationCode()" > Get train by station code </button>
+
+			 
+  </div>
+
+<script
+  src="angular.min.js">
+</script>
+<script>
+  angular.module('sportsApp', [])
+    .controller('MainCtrl', function($scope, $http) { 
+      
+      $scope.players = [];
+      $scope.newplayer = {};
+	  $scope.railway = {
+		stationname: '',
+		stationcode: '',
+		source:'',
+		destination:''
+	  };
+	  
+      var fetchPlayers = function() {
+	  
+         return $http.get('/demo/getplayers').then(function(response) {
+          $scope.players = response.data;
+        }, function(errResponse) {
+          console.error('Error while fetching players');
+        });
+      };
+
+      fetchPlayers();
+
+	  
+      $scope.addplayer = function() {
+        $http.post('/demo/insertplayer', $scope.newplayer).then(function(response) {
+		
+			fetchPlayers();
+		
+		}, function(errResponse) {
+          console.error('Error while inserting player');
+        });
+      };
+	  
+	  $scope.gettrainByStationName = function() 
+	  {
+	  
+	     return $http.post('/demo/gettrainByStationName', $scope.railway).then(function(response) {
+          $scope.trains = response.data;
+        }, function(errResponse) {
+          console.error('Error while fetching trains');
+        });
+		
+	  }
+	  
+	  
+	  $scope.gettrainByStationCode = function() 
+	  {
+	  
+	     return $http.post('/demo/gettrainByStationCode', $scope.railway).then(function(response) {
+          $scope.trains = response.data;
+        }, function(errResponse) {
+          console.error('Error while fetching trains');
+        });
+		
+	  }
+	  
+
+    });
+</script>
+</body>
+</html>

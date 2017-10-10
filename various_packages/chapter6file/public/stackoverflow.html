@@ -1,0 +1,40 @@
+<!-- File: chapter6/public/http-get-example.html -->
+<html ng-app="notesApp">
+
+<head>
+  <title>$http get example</title>
+  
+</head>
+
+<body ng-controller="MainCtrl">
+  <h1>Hello Servers!</h1>
+  <div ng-repeat="todo in items" class="item">
+    <div><span ng-bind="todo.label"></span></div>
+    <div>- by <span ng-bind="todo.author"></span></div>
+  </div>
+  {{response}}
+
+<script
+  src="angular.min.js">
+</script>
+<script>
+  angular.module('notesApp', [])
+    .controller('MainCtrl', function($scope, $http) {
+	// http://stackapps.com/questions/2/api-hello-world-code
+	//var url = "https://api.stackexchange.com/2.2/info?site=stackoverflow&key=Ap)5mjcEojbaaI47SdyieQ((";
+	
+	var url = "https://api.stackexchange.com/2.2/search?key=Ap)5mjcEojbaaI47SdyieQ((&site=stackoverflow&order=desc&sort=activity&intitle=angularjs&filter=default";
+	
+    
+      $scope.items = [];
+      $http.get(url).then(function(response) {
+	  var pretty = true;
+	  $scope.response = angular.toJson(response, pretty);
+       // $scope.items = response.data;
+      }, function(errResponse) {
+        console.error('Error while fetching notes');
+      });
+    });
+</script>
+</body>
+</html>

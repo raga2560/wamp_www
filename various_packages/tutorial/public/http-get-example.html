@@ -1,0 +1,35 @@
+
+<html ng-app="myApp">
+
+<head>
+  <title>$http get example</title>
+  
+</head>
+
+<body ng-controller="MainCtrl">
+  
+  <div ng-repeat="myitem in items" class="item">
+    <div><span ng-bind="myitem.name"></span> = <span ng-bind="myitem.desc"></div>
+    
+  </div>
+
+<script
+  src="angular.min.js">
+</script>
+<script>
+  angular.module('myApp', [])
+    .controller('MainCtrl', function($scope, $http) {
+	
+    
+      $scope.items = [];
+      $http.get('/api/products').then(function(response) {
+	  
+        $scope.items = response.data;
+      }, function(errResponse) {
+        console.error('Error while fetching notes');
+      
+	  });
+    });
+</script>
+</body>
+</html>

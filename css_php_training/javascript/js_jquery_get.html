@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>The jQuery Example</title>
+   <script type="text/javascript" 
+   src="jquery.min.js"></script>
+   <script type="text/javascript" language="javascript">
+  $(document).ready(function() {
+      $("#driver").click(function(event){
+          $.getJSON( 
+             "employees.json",
+             { name: "Zara" },
+             function(obj) {
+		
+			
+
+document.getElementById("demo").innerHTML =
+obj.employees[1].firstName + " " + obj.employees[1].lastName;
+
+
+        
+             }
+
+          );
+      });
+   });
+   </script>
+</head>
+<body>
+   <p>Click on the button to load result.html file:</p>
+   
+   <input type="button" id="driver" value="Load Data" />
+   <p id="demo"></p>
+
+</body>
+</html>

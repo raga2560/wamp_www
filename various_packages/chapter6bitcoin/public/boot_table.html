@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  
+  
+</head>
+<body>
+
+
+	
+<div class="row col-md-6 panel panel-default">
+<div class="panel-heading">
+                            Example of bootstrap with table.
+</div>
+
+
+
+
+
+<div class="panel-body">
+
+<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="success">Customer Name</th>
+                                            <th class="success">Number of orders</th>
+											<th class="success">Total sales</th>
+                                            
+                                        </tr>
+                                    </thead>
+			<tbody ng-repeat="item in salesbycustomername ">
+										<tr class="odd">
+                                            <td>Rajesh</td>
+											<td>10</td>
+											
+											<td>5000</td>
+                                            
+                                         
+                                        </tr>
+ 
+									<tr class="odd">
+                                            <td>Krishna</td>
+											<td>10</td>
+											
+											<td>5000</td>
+                                            
+                                         
+                                        </tr>
+ 
+                                
+                                  
+                                        <tr class="odd">
+                                            <td>{{item._id}}</td>
+											<td>{{item.num_products}}</td>
+											
+											<td>{{item.sales}}</td>
+                                            
+                                         
+                                        </tr>
+                                       
+
+	</tbody>	
+										
+
+  </table>
+                            
+	
+
+ - Compare this with regular table. </br>
+ Points to note are:- </br>
+ 1. bootstrap gives good look and feel </br>
+ 2. Bootstrap is easy to use </br>
+ 3. First create ordinary html, then update with bootstrap tags </br>
+ 
+ Next </br>
+1. Get data from json file and populate table </br>
+2. Get data from backend and display data in table </br>
+    
+  </div>
+  </div>
+  
+  
+  
+
+
+
+  
+
+</body>
+</html>

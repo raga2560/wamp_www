@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<p id="demo">    </p>
+<p id="demo1">    </p>
+
+<script>
+var text = '{ "employees" : [' +
+'{ "firstName":"John" , "lastName":"Doe" },' +
+'{ "firstName":"Anna" , "lastName":"Smith" },' +
+'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+var obj = JSON.parse(text);
+
+document.getElementById("demo").innerHTML =
+obj.employees[1].firstName + " " + obj.employees[1].lastName;
+
+for (x=0; x < obj.employees.length; x++)
+{
+alert(obj.employees[x].firstName );
+}
+</script>
+
+
+</body>
+</html>

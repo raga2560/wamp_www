@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+<script src= "angular.min.js"></script>
+
+
+</head>
+
+<body>
+
+<div ng-app="starter" >
+
+<div  ng-controller="myCtrl">
+First Name: <input type="text" ng-model="name"><br>
+Country: <input type="text" ng-model="country"><br>
+ 
+<button ng-click="add(name, country)">Add</button>
+
+</br>
+
+Data in first controller instance
+<ul>
+  <li ng-repeat="x in list  ">
+    {{ x.name + '  : ' + x.country }}
+	
+  </li>
+</ul>
+
+
+</div>
+
+Data in second controller instance
+<div  ng-controller="myCtrl">
+  <button ng-click="report()">Report</button>
+  
+  
+<br>
+
+<ul>
+  <li ng-repeat="x in list ">
+    {{ x.name + '  : ' + x.country }}
+	
+  </li>
+</ul>
+
+
+</div>
+  
+  
+<p style="color:red"> Points to understand 
+<br>
+1. Every instance of controller can have data specific to that instance. </br>
+2. Data entered in one instances of controller will not be available in another instance.
+
+</p>
+
+</div>
+
+<script>
+var app = angular.module('starter', []);
+
+app.controller('myCtrl', function($scope) {
+$scope.list = [
+      {name: 'James', country: 'USA'},
+      {name: 'Peter', country: 'Russia'}
+    ];
+	
+    
+	$scope.add = function(name, country) {
+	
+	$scope.list.push({
+        name: name,
+        country: country
+      });
+      
+    };
+
+    $scope.report = function() {
+      return $scope.list;
+    };
+	
+});
+
+
+</script>
+
+</body>
+</html>

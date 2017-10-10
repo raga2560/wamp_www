@@ -1,0 +1,20 @@
+<script src="angular.min.js">
+<script type="text/javascript" src="^angular_src^"></script>
+		<script type="text/javascript">
+		angular.module('pencilblueApp', [])
+    .controller('PencilBlueController1', function($scope) { 
+      
+      alert('hi');
+	  $scope.myname="ramesh";
+
+    });
+
+		</script>
+		
+<html ng-app="pencilblueApp">	
+<div ng-controller="PencilBlueController1">
+ {{myname}}
+</div>
+</html>
+
+

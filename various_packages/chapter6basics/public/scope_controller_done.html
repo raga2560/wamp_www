@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+<script src="angular.js">
+</script>
+<script>
+
+ angular.module('myApp1', [])
+
+.controller('myCtrl1', function ($scope){
+	$scope.firstname ="mike";
+	$scope.lastname = "peter";
+})
+
+.controller('myCtrl2', function ($scope){
+	$scope.firstname ="mike2";
+	$scope.lastname = "peter2";
+});
+
+</script>
+</head>
+<body ng-app="myApp1">
+<div >
+	<div ng-controller="myCtrl1" ng-init="firstname='krishna'">
+	<input type="text" ng-model="firstname"> </br>
+	<input type="text" ng-model="lastname"> </br>
+	
+	fullname : {{ firstname + " " +  lastname }}
+
+	</div>
+	
+</div>
+<div>
+
+	<div ng-controller="myCtrl2">
+	<input type="text" ng-model="firstname"> </br>
+	<input type="text" ng-model="lastname"> </br>
+	
+	fullname : {{ firstname + " " +  lastname }}
+	</br>
+	
+	<span style="color:blue" ng-bind="firstname"> colored name <span>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<!-- script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" -->
+<script src="angular-1.3.15/angular-1.3.15/angular.min.js">
+</script>
+<script>
+var app=angular.module('myApp', []);
+app.controller('myCtrl', function ($scope){
+	$scope.firstname ="mike";
+	$scope.lastname = "peter";
+});
+
+app.controller('myCtrl2', function ($scope){
+	$scope.firstname ="mike2";
+	$scope.lastname = "peter2";
+});
+
+</script>
+</head>
+<body>
+	<div ng-controller="myCtrl2">
+	<input type="text" ng-model="firstname"> </br>
+	<input type="text" ng-model="lastname"> </br>
+	
+	fullname : {{ firstname + " " +  lastname }}
+
+	</div>
+
+	<div ng-controller="myCtrl">
+	<input type="text" ng-model="firstname"> </br>
+	<input type="text" ng-model="lastname"> </br>
+	
+	fullname : {{ firstname + " " +  lastname }}
+
+	</div>
+
+</body>
+</html>

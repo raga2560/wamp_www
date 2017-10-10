@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+
+
+</div>
+
+<script>
+
+</script>
+
+<button onclick="addFunction()">Add</button>
+<button onclick="removeFunction()">remove </button>
+
+<script>
+function addFunction() {
+	
+	var para = document.createElement("p");
+var node = document.createTextNode("This is new.");
+para.setAttribute("id", "p3");
+para.appendChild(node);
+
+var element = document.getElementById("div1");
+var child = document.getElementById("p1");
+element.insertBefore(para,child);
+
+}
+
+function removeFunction() {
+    var myNodelist = document.getElementById("div1");
+    var child = document.getElementById("p3");
+	
+        myNodelist.removeChild(child);
+    
+}
+
+
+
+</script>
+
+
+</body>
+</html>

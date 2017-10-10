@@ -1,0 +1,18 @@
+
+
+	var stream = fileSystem.createReadStream(filePath);
+	var wr = fileSystem.createWriteStream('./dlview/'+'new.pdf');
+          stream.pipe(wr);
+           //wr.on('end', function() {
+			   response.json({path: '/dlview/'+'notfound.html'});
+			   // response.json({path: '/dlview/'+'new.pdf'});
+		   //}); 
+		   
+		   
+		   
+		   <a href={{datar.path}} target="_blank" > download {{datar.path}}</a>
+		   
+		   
+		   $http.get('/api/download').then(function(response) {
+        $scope.datar = response.data;
+		

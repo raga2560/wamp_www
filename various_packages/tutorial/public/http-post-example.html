@@ -1,0 +1,69 @@
+
+<html ng-app="myApp">
+
+<head>
+  <title>HTTP Post Example</title>
+  <style>
+    .item {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body ng-controller="MainCtrl">
+ <button ng-click="existingphones()"> Load existing products</button>
+   <div ng-repeat="myitem in items" class="item">
+    <div><span ng-bind="myitem.name"></span> = <span ng-bind="myitem.desc"></div>
+  </div>
+
+  <div>
+    <form name="addForm"
+          ng-submit="add()">
+      <input type="text"
+             placeholder="name"
+             ng-model="newitem.name"
+             required>
+      <input type="text"
+             placeholder="description"
+             ng-model="newitem.desc"
+             required>
+      <input type="submit"
+             value="Add"
+             >
+    </form>
+  </div>
+
+<script
+  src="angular.min.js">
+</script>
+<script>
+  angular.module('myApp', [])
+    .controller('MainCtrl', function($scope, $http) { 
+      
+      $scope.items = [];
+      $scope.newitem = {};
+	  
+      $scope.existingphones = function ()
+	  {
+	   $http.get('/api/products').then(function(response) {
+	  
+        $scope.items = response.data;
+      }, function(errResponse) {
+        console.error('Error while fetching notes');
+      
+	  });
+	  
+	  };
+
+      $scope.add = function() {
+        $http.post('/api/product', $scope.newitem)
+            
+            .then(function(response) {
+              $scope.items = response.data;
+            });
+      };
+
+    });
+</script>
+</body>
+</html>

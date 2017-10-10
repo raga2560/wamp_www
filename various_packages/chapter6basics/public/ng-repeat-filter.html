@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="storeapp">
+<head>
+
+<script src="angular.min.js">
+</script>
+<script>
+
+var app=angular.module('storeapp', []);
+
+// using this and $scope
+
+app.controller('StoreController', function ($scope){
+	this.product = gem;
+
+});
+
+
+var gem = [{
+	name: "choco",
+	price: 100,	
+	description: "good choco",
+	},
+	{
+	name: "pen",
+	price: 100,
+	description: "good pen",
+	},
+	{
+	name: "book",
+	price: 100,
+	description: "good book",
+	},
+	{
+	name: "choco1",
+	price: 1002,
+	description: "good blue choco"	,
+	},
+];
+
+// filter by val, orderBy
+
+</script>
+</head>
+
+<body ng-controller="StoreController as storelocal">
+<form class="form-inline">
+	<input ng-model="val" type="text" placeholder="filter by " autofocus>
+</form>
+	<div  ng-repeat="product in storelocal.product |filter:val |orderBy: 'name' ">
+	{{product.name}} </br>
+	{{product.price}} </br>
+	{{product.description}} </br>
+</div>
+</body>
+</html>

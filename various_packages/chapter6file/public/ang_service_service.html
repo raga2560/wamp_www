@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+<script src= "angular.min.js"></script>
+
+
+
+
+	
+</head>
+
+<body>
+
+<div ng-app="starter" >
+
+<div  ng-controller="myCtrl">
+First Name: <input type="text" ng-model="name"><br>
+Country: <input type="text" ng-model="country"><br>
+
+<button ng-click="add(name, country)">Add</button>
+</br>
+
+Data in first controller instance
+<ul>
+  <li ng-repeat="x in list  ">
+    {{ x.name + '  : ' + x.country }}
+	
+  </li>
+</ul>
+
+
+</div>
+
+Data in second controller instance
+<div  ng-controller="myCtrl">
+  <button ng-click="report()">Report</button>
+  
+  
+<br>
+
+<ul>
+  <li ng-repeat="x in list ">
+    {{ x.name + '  : ' + x.country }}
+	
+  </li>
+</ul>
+
+
+</div>
+
+<p style="color:red"> Points to understand </br>  
+- With service you can access current data from any controller. </br>
+- Service is a singleton, controller is not </br>
+- Service provides pointers to functions in service. <span style="color:green" > <--- Note this line is different in ang_factory_service.html </span> </br>
+</p>
+
+
+
+
+</div>
+
+<script>
+var app = angular.module('starter', ['starter.services']);
+
+app.controller('myCtrl', function($scope, ListService) {
+	
+	$scope.list = ListService.list();
+    
+	$scope.add = function(name, country) {
+	var item={name:name, country:country};
+	ListService.add(item);
+	$scope.list = ListService.list();
+	     
+    };
+
+    $scope.report = function() {
+      return ListService.list();
+    };
+	
+});
+
+
+var app1 = angular.module('starter.services', []);
+
+app1.service('ListService', function() {
+var items =
+	[
+      {name: 'James', country: 'USA'},
+      {name: 'Peter', country: 'Russia'}
+    ];
+	
+	this.list = function() {
+		return items;
+	};
+	this.add = function(item) {
+		items.push(item);
+	};
+
+
+	
+
+});
+
+
+
+</script>
+
+</body>
+</html>

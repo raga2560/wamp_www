@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>This is a p element</p>
+
+<p>This is also a p element.</p>
+
+<p>This is also a p element - Click the button to change the background color of all p elements 
+
+in this document.</p>
+
+<p id="id1">This is also a p element.</p>
+
+<button onclick="myFunction()">Try by Tag</button>
+<button onclick="myFunction1()">Try by Id </button>
+
+<script>
+function myFunction() {
+    var myNodelist = document.getElementsByTagName("p");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        myNodelist[i].style.backgroundColor = "red";
+    }
+}
+
+function myFunction1() {
+    var myNodelist = document.getElementById("id1");
+    
+        myNodelist.style.backgroundColor = "red";
+    
+}
+</script>
+
+</body>
+</html>
+
+

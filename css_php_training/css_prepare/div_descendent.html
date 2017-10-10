@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<title>Web Page Design</title>
+<head>
+<style type="text/css">
+
+
+#divleft
+{
+    width:120px;
+    float:left;
+    height:100%;
+    border:1px solid black;
+}
+#divmiddle
+{
+    width:400px;
+    float:left;
+    height:100%;
+    border:1px solid black;
+     align:"justify";
+   
+}
+#divright
+{
+    width:200px;
+    float:left;
+    height:100%;
+    border:1px solid black;
+}
+
+
+
+
+#divtop
+{
+   
+
+}
+
+#divtop a {
+}
+
+#divtop a:link {
+
+}
+
+#divtop a:hover {
+ background-color:gray;
+}
+
+
+#divleft a {
+}
+
+#divleft a:link {
+
+}
+
+#divleft a:hover {
+ background-color:blue;
+}
+
+
+#div3
+{
+   width:50;
+   height:75px; 
+   color:red;
+   border:1px solid black;
+   
+   padding:10px;
+   margin:5px;
+   overflow:auto; /* other options hidden, scroll, visible, auto */
+   
+   
+}
+
+
+
+p.middleclass {
+	color:blue;
+}
+
+p.rightclass {
+	color:green;
+}
+
+
+a.myclasslink {
+}
+
+a.myclasslink:link {
+
+}
+
+a.myclasslink:hover {
+ background-color:blue;
+}
+
+
+
+#divheader a { color:green; } 
+
+#divheader a:link { } 
+
+#divheader a:hover { background-color:blue;}  
+	  
+	  
+
+</style>
+</head>
+<body style="position:relative; left:20%; right:20%;">
+<div style="width:730px; height:50px;border:1px solid;margin-bottom:20px;border-radius:20px;" id="divheader"> 
+	<a href=# style="position:absolute;top:20px;left:600px;"> Login</a>
+   <div style="position:absolute;top:20px;left:100px;font-size:20px;"> My software company </div> 
+	
+</div>
+
+<div style="position:relative; left:100px;" id="divtop">  
+	<a style="border:1px solid;padding-right:30px;padding-left:30px;display:inline;" href="#"> HOME-2</a> 
+	<a  style="border:1px solid;padding-right:30px;padding-left:30px;margin-right:30px;margin-left:30px;" href="#">  PRODUCT-2 </a> 
+	<a > SERVICE-2 </a></div>
+
+
+
+
+<div id="divleft">
+    
+<a style="border:1px solid;padding-right:30px;padding-left:30px;display:block;" href="#"> HOME-1 </a> 
+<a  style="border:1px solid;padding-right:20px;padding-left:20px;display:block;text-decoration:none; " href="#">  PRODUCT-1 </a> 
+<a > SERVICE-1 </a>
+
+</div>
+
+
+<div id="divmiddle" >
+    
+    <div id="div3">  Hover over HOME-1 - you will see blue background. </br>
+  	 Hover over HOME-2 - you will see gray background. </br>
+	 This shows different styles for different divs.  
+
+	 
+    </div>
+    <div id="div3"> <p class="middleclass"> Hello world set with class="middleclass"  </p> 
+		<a href=# class="siteclasslink"> sitemap </a> </div>
+    <div id="div3">  <a href=# class="myclasslink"> classlink </a>  hyperlink class attribute set as "myclasslink". Hover over classlink to see background change. </div>
+
+</div>
+<div id="divright" > <p class="rightclass"> right text set with class="rightclass"  </p>
+    
+    
+</div>
+
+<div style="position:absolute;top:500px;"> 
+
+Assignment </br>
+
+</br>
+
+1. Change the background color on hover for login link. </br>
+
+Use : #divheader a { } </br>
+      #divheader a:link { } </br>
+      #divheader a:hover { background-color:blue;}  </br>
+
+ </br>
+
+</br>
+2.  Change the background color on hover for sitelink using classes. </br>
+
+
+Use: a.siteclasslink { } </br>
+a.siteclasslink:link {} </br>
+a.siteclasslink:hover {background-color:blue;} </br>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

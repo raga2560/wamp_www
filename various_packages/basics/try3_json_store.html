@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<head>
+<!-- script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" -->
+<script src="angular-1.3.15/angular-1.3.15/angular.min.js">
+</script>
+<script>
+
+var app=angular.module('storeapp', []);
+
+app.controller('StoreController', function ($scope){
+	this.product = gem;
+
+});
+
+
+var gem = {
+name: "choco",
+price: 100,
+description: "good choco"	,
+};
+
+</script>
+</head>
+<body >
+<div ng-app="storeapp">
+	<div ng-controller="StoreController as storelocal">
+	{{storelocal.product.name}} </br>
+	{{storelocal.product.price}} </br>
+	{{storelocal.product.description}} </br>
+	
+
+	</div>
+	</div>
+	
+	</div>
+
+</body>
+</html>

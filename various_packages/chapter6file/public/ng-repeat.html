@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="storeapp">
+<head>
+
+<script src="angular.min.js">
+</script>
+<script>
+
+var app=angular.module('storeapp', []);
+
+app.controller('StoreController', function ($scope){
+	$scope.products = gem;
+
+});
+
+
+var gem = [{
+name: "choco",
+price: 100,
+description: "good choco",
+},
+{
+name: "choco1",
+price: 1002,
+description: "good blue choco"	,
+},
+];
+</script>
+</head>
+<body ng-controller="StoreController">
+	<div  ng-repeat="product in products">
+	{{product.name}} </br>
+	{{product.price}} </br>
+	{{product.description}} </br>
+</div>
+</body>
+</html>
